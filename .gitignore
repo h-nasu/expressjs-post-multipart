@@ -1,2 +1,2 @@
-./tmp
-./node_module
+tmp/*
+node_modules
