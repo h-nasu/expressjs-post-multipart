@@ -28,7 +28,7 @@ app.get('/',function(req,res){
   res.sendFile('index.html');
 });
 
-app.post('/api/test',upload.single('tmpfile'),function(req,res){
+app.post('/api',upload.single('tmpfile'),function(req,res){
   console.log(req.file);
 
   var filePath = req.file.path;

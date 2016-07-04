@@ -2,5 +2,5 @@
   "name"             : "image-ar",
   "script"           : "server-pro.js",
   "watch"            : true,
-  "ignore_watch"      : ["tmp"],
+  "ignore_watch"      : ["tmp","src/client"],
 }

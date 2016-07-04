@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "64f27df3f2d48ed48df6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "394939ff26bbfbe29edb"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -609,10 +609,6 @@
 	var _react2 = _interopRequireDefault(_react);
 	
 	var _reactDom = __webpack_require__(/*! react-dom */ 390);
-	
-	var _AwesomeComponent = __webpack_require__(/*! ./AwesomeComponent.jsx */ 477);
-	
-	var _AwesomeComponent2 = _interopRequireDefault(_AwesomeComponent);
 	
 	var _CameraComponent = __webpack_require__(/*! ./CameraComponent.jsx */ 481);
 	
@@ -30760,87 +30756,7 @@
 	module.exports = ReactMount.renderSubtreeIntoContainer;
 
 /***/ },
-/* 477 */
-/*!*********************************************!*\
-  !*** ./src/client/app/AwesomeComponent.jsx ***!
-  \*********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(/*! ./~/react-hot-api/modules/index.js */ 3), RootInstanceProvider = __webpack_require__(/*! ./~/react-hot-loader/RootInstanceProvider.js */ 11), ReactMount = __webpack_require__(/*! react/lib/ReactMount */ 13), React = __webpack_require__(/*! react */ 77); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
-	
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 77);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var AwesomeComponent = function (_React$Component) {
-	  _inherits(AwesomeComponent, _React$Component);
-	
-	  function AwesomeComponent(props) {
-	    _classCallCheck(this, AwesomeComponent);
-	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AwesomeComponent).call(this, props));
-	
-	    _this.state = { likesCount: 0 };
-	    _this.onLike = _this.onLike.bind(_this);
-	    return _this;
-	  }
-	
-	  _createClass(AwesomeComponent, [{
-	    key: 'onLike',
-	    value: function onLike() {
-	      var newLikesCount = this.state.likesCount + 1;
-	      this.setState({ likesCount: newLikesCount });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        'Likes : ',
-	        _react2.default.createElement(
-	          'span',
-	          null,
-	          this.state.likesCount
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: this.onLike },
-	            'Like Me'
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return AwesomeComponent;
-	}(_react2.default.Component);
-	
-	exports.default = AwesomeComponent;
-	
-	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(/*! ./~/react-hot-loader/makeExportsHot.js */ 478); if (makeExportsHot(module, __webpack_require__(/*! react */ 77))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "AwesomeComponent.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../~/webpack/buildin/module.js */ 2)(module)))
-
-/***/ },
+/* 477 */,
 /* 478 */
 /*!**********************************************!*\
   !*** ./~/react-hot-loader/makeExportsHot.js ***!
@@ -31019,19 +30935,18 @@
 	  function CameraComponent(props) {
 	    _classCallCheck(this, CameraComponent);
 	
-	    //this.videoElement = React.createElement("video");
-	    //this.gotSources = this.gotSources.bind(this);
-	
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CameraComponent).call(this, props));
 	
 	    _this._bind('_gotSources', '_successCallback', '_errorCallback', '_start', '_captureImage');
 	
+	    _this.haveMedia = false;
 	    _this.audioSelect = [];
 	    _this.videoSelect = [];
 	    _this.cimg = [];
 	    _this.state = {
 	      videoSrc: '',
-	      captures: []
+	      //captures: [],
+	      showImageSrc: ''
 	    };
 	    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 	
@@ -31039,6 +30954,7 @@
 	      alert('This browser does not support MediaStreamTrack.\n\nTry Chrome.');
 	    } else {
 	      MediaStreamTrack.getSources(_this._gotSources);
+	      _this.haveMedia = false;
 	    }
 	
 	    return _this;
@@ -31047,7 +30963,9 @@
 	  _createClass(CameraComponent, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      this._start();
+	      if (this.haveMedia) {
+	        this._start();
+	      }
 	    }
 	  }, {
 	    key: '_gotSources',
@@ -31066,9 +30984,15 @@
 	  }, {
 	    key: '_successCallback',
 	    value: function _successCallback(stream) {
+	      var _this2 = this;
+	
 	      window.stream = stream; // make stream available to console
 	      this.setState({ videoSrc: window.URL.createObjectURL(stream) });
 	      this._video.play();
+	
+	      setInterval(function () {
+	        _this2._captureImage();
+	      }, 3000);
 	    }
 	  }, {
 	    key: '_errorCallback',
@@ -31100,79 +31024,74 @@
 	    }
 	  }, {
 	    key: '_captureImage',
-	    value: function _captureImage() {
-	      var scale = this.props.scale;
-	      var canvas = document.createElement("canvas");
-	      canvas.width = this._video.videoWidth * scale;
-	      canvas.height = this._video.videoHeight * scale;
-	      canvas.getContext('2d').drawImage(this._video, 0, 0, canvas.width, canvas.height);
+	    value: function _captureImage(e) {
+	      var _this3 = this;
 	
-	      var imgSrc = canvas.toDataURL('image/jpeg');
-	      var img = function img() {
-	        return _react2.default.createElement('img', { src: imgSrc });
-	      };
+	      if (this.haveMedia) {
+	        var scale = this.props.scale;
+	        var canvas = document.createElement("canvas");
+	        canvas.width = this._video.videoWidth * scale;
+	        canvas.height = this._video.videoHeight * scale;
+	        canvas.getContext('2d').drawImage(this._video, 0, 0, canvas.width, canvas.height);
+	        var imgSrc = canvas.toDataURL('image/jpeg');
+	        //const img = ()=>(<img src={imgSrc} />);
+	        imgSrc = this._dataURItoBlob(imgSrc);
+	      } else {
+	        e.preventDefault();
+	        var imgSrc = e.target.files[0];
+	      }
 	
 	      var data = new FormData();
-	      data.append('tmpfile', this._dataURItoBlob(imgSrc));
+	      data.append('tmpfile', imgSrc);
 	
-	      //fetch('http://local.co:4212/index/searcher', {
-	      (0, _isomorphicFetch2.default)('http://localhost:3000/api/test', {
+	      (0, _isomorphicFetch2.default)('http://localhost:3000/api', {
 	        method: 'post',
 	        body: data
 	      }).then(this._checkStatus).then(this._parseJSON).then(function (res) {
 	        console.log(res);
+	        if (res.image_ids.length > 0) {
+	          var imageSrc = null;
+	          switch (res.image_ids[0]) {
+	            case 1:
+	              if (res.scores[0] > 10) {
+	                imageSrc = 'images/mueythai1.jpg';
+	              }
+	              break;
+	            case 2:
+	              imageSrc = 'images/monalisa.jpg';
+	              break;
+	            default:
+	              break;
+	          }
+	          if (imageSrc && res.scores[0] > 10) {
+	            _this3.setState({ showImageSrc: imageSrc });
+	            return;
+	          }
+	        }
+	        _this3.setState({ showImageSrc: '' });
 	      }).catch(function (err) {
 	        console.log(err);
 	      });
-	
-	      /*
-	          var uuid = new Date().toISOString();
-	          fetch('http://localhost:5984/test-upload/'+uuid, {
-	            method: 'put',
-	            headers: {
-	              'Accept': 'application/json'
-	            },
-	            body: JSON.stringify({new:'file'})
-	          }).then(this._checkStatus).then(this._parseJSON).then(
-	            (resData)=>{
-	              fetch('http://localhost:5984/test-upload/'+resData.id+'/attachment.jpg?rev='+resData.rev, {
-	                method: 'put',
-	                body: this._dataURItoBlob(imgSrc)
-	              }).then(this._checkStatus).then(this._parseJSON)
-	              .then( (res)=>{
-	                console.log(res);
-	              } ).catch( (err)=>{
-	                console.log(err);
-	              } );
-	            }
-	          );
-	      */
-	
-	      this.cimg.push(img);
-	      this.setState({ captures: this.cimg });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
+	      var _this4 = this;
 	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement('video', { muted: 'true', autoplay: '', ref: function ref(r) {
-	            return _this2._video = r;
-	          }, src: this.state.videoSrc }),
-	        _react2.default.createElement(
-	          'button',
-	          { id: 'capture', onClick: this._captureImage },
-	          'Capture'
+	        this.haveMedia ? _react2.default.createElement('video', { muted: 'true', autoplay: '', ref: function ref(r) {
+	            return _this4._video = r;
+	          }, src: this.state.videoSrc }) : _react2.default.createElement(
+	          'form',
+	          null,
+	          _react2.default.createElement('input', { type: 'file', accept: 'image/*', capture: 'camera', onChange: this._captureImage })
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { id: 'output' },
-	          this.state.captures.map(function (img) {
-	            return img();
-	          })
+	          null,
+	          _react2.default.createElement('img', { src: this.state.showImageSrc, style: this.haveMedia ? styles.imageOnTop : null })
 	        )
 	      );
 	    }
@@ -31182,6 +31101,14 @@
 	}(_BaseComponent3.default);
 	
 	exports.default = CameraComponent;
+	
+	
+	var styles = {
+	  imageOnTop: {
+	    position: 'fixed',
+	    top: 0
+	  }
+	};
 	
 	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(/*! ./~/react-hot-loader/makeExportsHot.js */ 478); if (makeExportsHot(module, __webpack_require__(/*! react */ 77))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "CameraComponent.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../~/webpack/buildin/module.js */ 2)(module)))

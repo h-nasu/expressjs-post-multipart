@@ -6,17 +6,16 @@ import fetch from 'isomorphic-fetch';
 export default class CameraComponent extends BaseComponent {
   constructor(props) {
     super(props);
-    //this.videoElement = React.createElement("video");
-    //this.gotSources = this.gotSources.bind(this);
     this._bind('_gotSources', '_successCallback', '_errorCallback', '_start', '_captureImage');
 
-
+    this.haveMedia = false;
     this.audioSelect = [];
     this.videoSelect = [];
     this.cimg = [];
     this.state = {
       videoSrc: '',
-      captures: []
+      //captures: [],
+      showImageSrc: ''
     };
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
@@ -25,13 +24,15 @@ export default class CameraComponent extends BaseComponent {
       alert('This browser does not support MediaStreamTrack.\n\nTry Chrome.');
     } else {
       MediaStreamTrack.getSources(this._gotSources);
+      this.haveMedia = false;
     }
 
   }
 
-
   componentDidMount() {
-    this._start()
+    if (this.haveMedia) {
+      this._start();
+    }
   }
   
   _gotSources(sourceInfos) {
@@ -51,6 +52,11 @@ export default class CameraComponent extends BaseComponent {
     window.stream = stream; // make stream available to console
     this.setState({videoSrc: window.URL.createObjectURL(stream)});
     this._video.play();
+
+    setInterval(()=>{
+      this._captureImage();
+    }, 3000);
+    
   }
 
   _errorCallback(error) {
@@ -80,49 +86,83 @@ export default class CameraComponent extends BaseComponent {
   }
 
 
-  _captureImage() {
-    var scale = this.props.scale;
-    var canvas = document.createElement("canvas");
-    canvas.width = this._video.videoWidth * scale;
-    canvas.height = this._video.videoHeight * scale;
-    canvas.getContext('2d')
-          .drawImage(this._video, 0, 0, canvas.width, canvas.height);
+  _captureImage(e) {
 
-    var imgSrc = canvas.toDataURL('image/jpeg');
-    const img = ()=>(<img src={imgSrc} />);
+    if (this.haveMedia) {
+      var scale = this.props.scale;
+      var canvas = document.createElement("canvas");
+      canvas.width = this._video.videoWidth * scale;
+      canvas.height = this._video.videoHeight * scale;
+      canvas.getContext('2d')
+            .drawImage(this._video, 0, 0, canvas.width, canvas.height);
+      var imgSrc = canvas.toDataURL('image/jpeg');
+      //const img = ()=>(<img src={imgSrc} />);
+      imgSrc = this._dataURItoBlob(imgSrc);
+    } else {
+      e.preventDefault();
+      var imgSrc = e.target.files[0];
+    }
+    
     
 
     var data = new FormData();
-    data.append('tmpfile', this._dataURItoBlob(imgSrc));
+    data.append('tmpfile', imgSrc);
 
-    //fetch('http://local.co:4212/index/searcher', {
     fetch('http://localhost:3000/api', {
       method: 'post',
       body: data
     }).then(this._checkStatus).then(this._parseJSON)
     .then( (res)=>{
       console.log(res);
+      if (res.image_ids.length > 0) {
+        var imageSrc = null;
+        switch(res.image_ids[0]){
+          case 1:
+            if (res.scores[0] > 10) {
+              imageSrc = 'images/mueythai1.jpg';
+            }
+            break;
+          case 2:
+            imageSrc = 'images/monalisa.jpg';
+            break;
+          default:
+            break;
+        }
+        if (imageSrc && res.scores[0] > 10) {
+          this.setState({showImageSrc:imageSrc});
+          return;
+        }
+      }
+      this.setState({showImageSrc:''});
     } ).catch( (err)=>{
       console.log(err);
     } );
-    
-    this.cimg.push(img);
-    this.setState({ captures: this.cimg });
   }
 
   render() {
     return (
       <div>
-        <video muted="true" autoplay="" ref={(r) => this._video = r} src={this.state.videoSrc}></video>
-        <button id="capture" onClick={this._captureImage}>Capture</button>
-        <div id="output">
-          {this.state.captures.map(function(img){
-            return img();
-          })}
+        {this.haveMedia ?
+          <video muted="true" autoplay="" ref={(r) => this._video = r} src={this.state.videoSrc}></video>
+          :
+          <form>
+            <input type="file" accept="image/*" capture="camera" onChange={this._captureImage} />
+          </form>
+        }
+        <div>
+          <img src={this.state.showImageSrc} style={this.haveMedia ? styles.imageOnTop : null} />
         </div>
+
       </div>
     );
   }
 
 }
+
+const styles = {
+  imageOnTop: {
+    position: 'fixed',
+    top: 0
+  }
+};
 
