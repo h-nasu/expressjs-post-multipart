@@ -15,7 +15,7 @@ export default class CameraComponent extends BaseComponent {
     this.state = {
       videoSrc: '',
       //captures: [],
-      showImageSrc: ''
+      showResSrc: ()=>(null)
     };
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
@@ -24,7 +24,7 @@ export default class CameraComponent extends BaseComponent {
       alert('This browser does not support MediaStreamTrack.\n\nTry Chrome.');
     } else {
       MediaStreamTrack.getSources(this._gotSources);
-      this.haveMedia = false;
+      this.haveMedia = true;
     }
 
   }
@@ -115,25 +115,23 @@ export default class CameraComponent extends BaseComponent {
     .then( (res)=>{
       console.log(res);
       if (res.image_ids.length > 0) {
-        var imageSrc = null;
+        var ResSrc = ()=>(null);
         switch(res.image_ids[0]){
           case 1:
-            if (res.scores[0] > 10) {
-              imageSrc = 'images/mueythai1.jpg';
-            }
+            ResSrc = ()=>(<iframe width="560" height="315" src="https://www.youtube.com/embed/5PN6owrZxMI?autoplay=1" frameborder="0" allowfullscreen></iframe>);
             break;
           case 2:
-            imageSrc = 'images/monalisa.jpg';
+            ResSrc = ()=>(<img src="images/monalisa.jpg"  />);
             break;
           default:
             break;
         }
-        if (imageSrc && res.scores[0] > 10) {
-          this.setState({showImageSrc:imageSrc});
+        if (ResSrc && res.scores[0] > 10) {
+          this.setState({showResSrc:ResSrc});
           return;
         }
       }
-      this.setState({showImageSrc:''});
+      this.setState({showResSrc: ()=>(null)});
     } ).catch( (err)=>{
       console.log(err);
     } );
@@ -149,8 +147,8 @@ export default class CameraComponent extends BaseComponent {
             <input type="file" accept="image/*" capture="camera" onChange={this._captureImage} />
           </form>
         }
-        <div>
-          <img src={this.state.showImageSrc} style={this.haveMedia ? styles.imageOnTop : null} />
+        <div style={this.haveMedia ? styles.imageOnTop : null}>
+          {this.state.showResSrc()}
         </div>
 
       </div>
