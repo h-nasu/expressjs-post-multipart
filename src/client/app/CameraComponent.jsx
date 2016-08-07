@@ -55,7 +55,7 @@ export default class CameraComponent extends BaseComponent {
 
     setInterval(()=>{
       this._captureImage();
-    }, 3000);
+    }, 2000);
     
   }
 
@@ -108,17 +108,17 @@ export default class CameraComponent extends BaseComponent {
     var data = new FormData();
     data.append('tmpfile', imgSrc);
 
-    fetch('http://localhost:3000/api', {
+    fetch('/api', {
       method: 'post',
       body: data
     }).then(this._checkStatus).then(this._parseJSON)
     .then( (res)=>{
       console.log(res);
-      if (res.image_ids.length > 0) {
+      if (res.image_ids.length > 0 ) {
         var ResSrc = ()=>(null);
         switch(res.image_ids[0]){
           case 1:
-            ResSrc = ()=>(<iframe width="560" height="315" src="https://www.youtube.com/embed/5PN6owrZxMI?autoplay=1" frameborder="0" allowfullscreen></iframe>);
+            ResSrc = ()=>(<iframe width="560" height="315" src="https://www.youtube.com/embed/5PN6owrZxMI?autoplay=1" frameborder="0" allowfullscreen></iframe>); 
             break;
           case 2:
             ResSrc = ()=>(<img src="images/monalisa.jpg"  />);
@@ -126,7 +126,8 @@ export default class CameraComponent extends BaseComponent {
           default:
             break;
         }
-        if (ResSrc && res.scores[0] > 10) {
+        //if (ResSrc && res.score > 10) {
+        if (ResSrc) {
           this.setState({showResSrc:ResSrc});
           return;
         }
